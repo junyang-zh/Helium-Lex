@@ -12,6 +12,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 # Directory configurations
 
 aux_source_directory(./src DIR_SRCS)
-aux_source_directory(./lib DIR_LIBS)
+include_directories(./lib)
 
-add_executable(HeliumLex ${DIR_SRCS} ${DIR_LIBS})
+add_executable(HeliumLex ${DIR_SRCS})
