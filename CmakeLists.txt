@@ -1,0 +1,17 @@
+# CMake Minimum Version
+
+cmake_minimum_required(VERSION 2.8)
+
+project(HeliumLex)
+
+# specify the C++ standard
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# Directory configurations
+
+aux_source_directory(./src DIR_SRCS)
+aux_source_directory(./lib DIR_LIBS)
+
+add_executable(HeliumLex ${DIR_SRCS} ${DIR_LIBS})
