@@ -38,104 +38,30 @@ int main(int argc, char *argv[], char *envp[]) {
         strcpy(f_out[1] + strlen(argv[1]), "lexically_analyzed.txt");
     }
     FILE * InFile = fopen(f_in, "r"),
-        * OutPreFile = fopen(f_out[0], "w+"),
-        * OutLexFile = fopen(f_out[1], "w+");
+        * OutPreFile = fopen(f_out[0], "w+");
 
-    // preprocessing: identify comments, indents, continuations, word splits
-    // which cannot be done by DFA
+    // preprocessing
     char *current_line = new char[Max_Line_Length];
-    int continuation_place(0); // to support continuation feature
-    bool raw_contiuation_sing = false, raw_contiuation_doub = false; // to support raw string
-    while (fgets(current_line + continuation_place,
-                Max_Line_Length - continuation_place,
-                InFile) != NULL) {
-
-        char *cur = current_line + continuation_place;
-        int spcs(0), idnts(0), len(strlen(cur)), stp(0);
-        if (!raw_contiuation_sing && !raw_contiuation_doub) {
-            // identify tabs or 4 spaces
-            while (stp < len) {
-                if (cur[stp] == '\t') ++idnts;
-                else if (cur[stp] == ' ') ++spcs;
-                else break;
-                ++stp;
-            }
-            /*if (continuation_place != 0 && !(raw_contiuation_sing || raw_contiuation_doub)) {
-                for (int i(0); i <= len - idnts - spcs; ++i) {
-                    cur[i] = cur[i + idnts + spcs];
-                }
-            }*/
-            idnts += spcs / 4;
-            spcs %= 4;
-        }
-
-        // identify comments '#', raw string '''''' or contiuation '\'
-        bool is_cont = (raw_contiuation_sing || raw_contiuation_doub);
-        int endp = (continuation_place + len);
-        for (int i(stp); i < len; ++i) {
-            if (cur[i] == '\'' && i + 1 < len && cur[i+1] == '\'' && i + 2 < len && cur[i+2] == '\'') {
-                if (raw_contiuation_sing) {
-                    raw_contiuation_sing = false;
-                    is_cont = false;
-                    i += 3;
-                }
-                else {
-                    is_cont = raw_contiuation_sing = true;
-                    break;
-                }
-            }
-            if (cur[i] == '\"' && i + 1 < len && cur[i+1] == '\"' && i + 2 < len && cur[i+2] == '\"') {
-                if (raw_contiuation_doub) {
-                    raw_contiuation_doub = false;
-                    is_cont = false;
-                    i += 3;
-                }
-                else {
-                    is_cont = raw_contiuation_doub = true;
-                    break;
-                }
-            }
-            if (!raw_contiuation_sing && !raw_contiuation_doub) {
-                if (cur[i] == '#') {
-                    cur[i] = '\n';
-                    cur[i + 1] = '\0';
-                    endp = continuation_place + i + 1;
-                    break;
-                }
-                if (cur[i] == '\\' && cur[i + 1] == '\n') {
-                    endp = continuation_place + i;
-                    is_cont = true;
-                    cur[i] = '\0';
-                    break;
-                }
-            }
-        }
-        if (is_cont) {
-            continuation_place = endp;
-            continue;
-        }
-        continuation_place = 0;
-        raw_contiuation_sing = raw_contiuation_doub = false;
-        if (current_line[0] == '\n') continue;
-        for (int i(0); i < idnts; ++i) {
-            fputs("<\'\\t\',Indent>\n", OutPreFile);
-        }
-        // fputs(current_line, OutPreFile);
-        // need to resolve word split, thus scan OPs
-        for (int i(0); current_line[i]; ++i) {
-            if (current_line[i] == '\n' && current_line[i+1]) {
-                fputc('\\', OutPreFile);
-                fputc('n', OutPreFile);
-            }
-            else {
-                fputc(current_line[i], OutPreFile);
-            }
-        }
+    while (fgets(current_line, Max_Line_Length, InFile) != NULL) {
+        fputs(current_line, OutPreFile);
     }
-    delete [] current_line;
+    delete[] current_line;
 
     fclose(InFile);
     fclose(OutPreFile);
+
+    FILE * InPreFile = fopen(f_out[0], "r"),
+        * OutLexFile = fopen(f_out[1], "w+");
+
+    Helium::DFA LEXAUTO;
+    LEXAUTO.add_new_Words_Trie(Helium::PyKWList, "Keyword");
+    LEXAUTO.add_new_Words_Trie(Helium::PySingOpList, "OP");
+    LEXAUTO.add_new_Words_Trie(Helium::PyCompOpList, "OP");
+    int curr; // now char
+    while ((curr = fgetc(InPreFile)) != EOF) {
+
+    }
+
     fclose(OutLexFile);
 
     return 0;
