@@ -1,4 +1,4 @@
-# Python test file for HeliumLex
+# Strong Python test file for HeliumLex
 # Which implements the Eular Prime Sieve Algorithm and other bullshit language features
 # By James Zhang
 
@@ -10,6 +10,7 @@ import os
 
 ## variable declearation argument tests
 MaxN = 100000
+print("Welcome to python-like language test!")
 
 ## function and indent tests
 # generate: returns a list with all primes lower than N
@@ -45,6 +46,15 @@ class test:
         guess = [2, 2]
         params, params_covariance = curve_fit(f, xdata, ydata, guess)
         return params
+    def raw_string_and_comment_test(self):
+        '''
+        Yes it is a nice way to comment large sections
+        '''
+        self.tested = """ Why don't do so?
+When you can
+                even if not pretty. # and here not comment
+        """
+        return self.tested + ' So laughing out loud'
 
 ## main provides string and more tests
 def main():
@@ -60,6 +70,24 @@ def main():
     print(targ.dict_test())
     print(targ.lambda_and_generative_test())
     print(targ.call_and_math_test())
+    print(targ.raw_string_and_comment_test())
+    print(
+        "These",
+        "kinds",
+        "of",
+        "crossing lines are allowed", \
+        "in python"
+    )
+
+# some wierd code style test
+    ifanyoneswitch=(1*23)
+    ____________somebar1234___sad =ifanyoneswitch
+    _m_o_n_u_m_e_n_t_=____________somebar1234___sad*2+ifanyoneswitch
+    IF         = 0o31 ** 0O67 - _m_o_n_u_m_e_n_t_ +        0b100010111010110 - 0B110 / 0x1223144FDF89A
+    WhIle="Hello\0no '' t\\"
+    dEF=IF/____________somebar1234___sad
+    MAIN = 30.2341 - 18.3j
+    MAIN-= IF
 
     print(os.listdir())
 

@@ -41,6 +41,16 @@ HeliumLex ./tests/test.py ./tests
 
 
 
+The result could be checked by comparing with the python language tokenizer.
+
+```bash
+python -m tokenize tests/test.py
+```
+
+
+
+
+
 ### Windows
 
 `TODO: Build and Test in Windows`

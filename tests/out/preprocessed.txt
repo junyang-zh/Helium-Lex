@@ -1,68 +1,164 @@
-# Python test file for HeliumLex
-# Which implements the Eular Prime Sieve Algorithm and other bullshit language features
-# By James Zhang
-
-## import argument tests
 import numpy as np
 from functools import reduce
 from scipy.optimize import *
 import os
-
-## variable declearation argument tests
 MaxN = 100000
-
-## function and indent tests
-# generate: returns a list with all primes lower than N
+print("Welcome to python-like language test!")
 def generate(N):
+<'\t',Indent>
     prime_list = []
-    ## weird grammer tests
+<'\t',Indent>
+    
+<'\t',Indent>
     is_prime = [True] * MaxN
+<'\t',Indent>
     is_prime[0] = is_prime[1] = False
+<'\t',Indent>
     for i in range(2, N):
+<'\t',Indent>
+<'\t',Indent>
         if (is_prime[i]):
+<'\t',Indent>
+<'\t',Indent>
+<'\t',Indent>
             prime_list.append(i)
+<'\t',Indent>
+<'\t',Indent>
         j = 0
+<'\t',Indent>
+<'\t',Indent>
         while (j < len(prime_list) and i * prime_list[j] < N):
+<'\t',Indent>
+<'\t',Indent>
+<'\t',Indent>
             is_prime[i * prime_list[j]] = False
+<'\t',Indent>
+<'\t',Indent>
+<'\t',Indent>
             if (i % prime_list[j] == 0):
+<'\t',Indent>
+<'\t',Indent>
+<'\t',Indent>
+<'\t',Indent>
                 break
+<'\t',Indent>
+<'\t',Indent>
+<'\t',Indent>
             j += 1
+<'\t',Indent>
     return prime_list
-
 class test:
+<'\t',Indent>
     def dict_test(self):
+<'\t',Indent>
+<'\t',Indent>
         dict_a = {}
+<'\t',Indent>
+<'\t',Indent>
         dict_b = { 'Hello' : dict_a }
+<'\t',Indent>
+<'\t',Indent>
         return dict_b
+<'\t',Indent>
     def lambda_and_generative_test(self):
+<'\t',Indent>
+<'\t',Indent>
         targ = [i * 3 for i in range(0, 10)]
+<'\t',Indent>
+<'\t',Indent>
         els = np.array(targ)
+<'\t',Indent>
+<'\t',Indent>
         return reduce(lambda x, y: x * 2 + y, targ) * np.sum(targ)
-    def call_and_math_test(self): ## using scipy
+<'\t',Indent>
+    def call_and_math_test(self): 
+<'\t',Indent>
+<'\t',Indent>
         f = lambda x, a, b: x**a + b * np.sin(x)
+<'\t',Indent>
+<'\t',Indent>
         xdata = np.linspace(-10, 10, num = 20)
+<'\t',Indent>
+<'\t',Indent>
         ydata = f(xdata, 1, 7) + np.random.randn(xdata.size)
+<'\t',Indent>
+<'\t',Indent>
         guess = [2, 2]
+<'\t',Indent>
+<'\t',Indent>
         params, params_covariance = curve_fit(f, xdata, ydata, guess)
+<'\t',Indent>
+<'\t',Indent>
         return params
-
-## main provides string and more tests
+<'\t',Indent>
+    def raw_string_and_comment_test(self):
+        '''\n        Yes it is a nice way to comment large sections\n        '''
+        self.tested = """ Why don't do so?\nWhen you can\n                even if not pretty. # and here not comment\n        """
+<'\t',Indent>
+<'\t',Indent>
+        return self.tested + ' So laughing out loud'
 def main():
+<'\t',Indent>
     N = eval(input('This is the Eular Prime Generator, please input N as the upper limit of the generation:\n'))
+<'\t',Indent>
     while (not isinstance(N, int)):
+<'\t',Indent>
+<'\t',Indent>
         N = eval(input('Please input an integer:'))
+<'\t',Indent>
     print('Generating...')
+<'\t',Indent>
     res = generate(N)
+<'\t',Indent>
     print(res)
-
-    ## more tests
+<'\t',Indent>
+    
+<'\t',Indent>
     targ = test()
+<'\t',Indent>
     print(targ.dict_test())
+<'\t',Indent>
     print(targ.lambda_and_generative_test())
+<'\t',Indent>
     print(targ.call_and_math_test())
-
+<'\t',Indent>
+    print(targ.raw_string_and_comment_test())
+<'\t',Indent>
+    print(
+<'\t',Indent>
+<'\t',Indent>
+        "These",
+<'\t',Indent>
+<'\t',Indent>
+        "kinds",
+<'\t',Indent>
+<'\t',Indent>
+        "of",
+<'\t',Indent>
+<'\t',Indent>
+        "crossing lines are allowed",         "in python"
+<'\t',Indent>
+    )
+<'\t',Indent>
+    ifanyoneswitch=(1*23)
+<'\t',Indent>
+    ____________somebar1234___sad =ifanyoneswitch
+<'\t',Indent>
+    _m_o_n_u_m_e_n_t_=____________somebar1234___sad*2+ifanyoneswitch
+<'\t',Indent>
+    IF         = 0o31 ** 0O67 - _m_o_n_u_m_e_n_t_ +        0b100010111010110 - 0B110 / 0x1223144FDF89A
+<'\t',Indent>
+    WhIle="Hello\0no '' t\\"
+<'\t',Indent>
+    dEF=IF/____________somebar1234___sad
+<'\t',Indent>
+    MAIN = 30.2341 - 18.3j
+<'\t',Indent>
+    MAIN-= IF
+<'\t',Indent>
     print(os.listdir())
-
 if __name__ == "__main__":
-    # execute only if run as a script
+<'\t',Indent>
+    
+<'\t',Indent>
     main()
