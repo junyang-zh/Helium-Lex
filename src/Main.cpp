@@ -72,7 +72,7 @@ int main(int argc, char *argv[], char *envp[]) {
     char * currtoken = new char[Max_Line_Length];
     while ((curr = fgetc(InPreFile)) != EOF) {
         auto res = LEXAUTO.next(curr);
-        printf("chk %d\n", res.first);
+        // printf("chk %d\n", res.first);
         if (res.first == -1) { // moving
             currtoken[nl++] = curr;
         }
@@ -105,6 +105,8 @@ int main(int argc, char *argv[], char *envp[]) {
 
     fclose(InPreFile);
     fclose(OutLexFile);
+
+    printf("Tokenizing finished successfully.\n");
 
     return 0;
 }

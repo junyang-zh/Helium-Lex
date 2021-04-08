@@ -147,7 +147,7 @@ public:
         }
     }
     std::pair<int, std::string> next(char a) { // -1 continue, -2 is tab, -3 ignore
-        printf("%c %d %d %d \"%s\"\n", a, (void*)S, (void*)(now->och_default), now->TokenID, now->TokenType.c_str());
+        // printf("%c %d %d %d \"%s\"\n", a, (void*)S, (void*)(now->och_default), now->TokenID, now->TokenType.c_str());
         if (now == S && a == '\t') {
             return std::make_pair(-2, "Indent");
         }
