@@ -15,3 +15,5 @@ aux_source_directory(./src DIR_SRCS)
 include_directories(./lib)
 
 add_executable(HeliumLex ${DIR_SRCS})
+
+install(TARGETS HeliumLex RUNTIME DESTINATION ${CMAKE_SOURCE_DIR})
