@@ -34,7 +34,7 @@ make
 Then run the executable file `HeliumLex`, with sample input given in `./tests/test.py`. The preprocessed files and output files can be the attributes of the executable file.
 
 ```bash
-HeliumLex ./tests/test.py ./tests
+./HeliumLex ./tests/test.py ./tests
 ```
 
 
@@ -51,9 +51,14 @@ python -m tokenize tests/test.py
 
 ### Windows
 
-Using WSL in Windows is encouraged, but MSVC can also be used to build this project.
+Using WSL in Windows is encouraged, but `MSVC` can also be used to build this project.
 
-
+ 1. Start Visual Studio
+ 2. Select "File" -> "Open" -> "CMake"
+ 3. Select "CmakeLists.txt"
+ 4. Wait MSVC to build files
+ 5. Configure the build and install directory in the root directory
+ 6. Run HeliumLex.exe in terminal
 
 
 
