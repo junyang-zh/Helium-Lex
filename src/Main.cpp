@@ -26,7 +26,7 @@ int main(int argc, char *argv[], char *envp[]) {
         strcpy(f_in, "./tests/test.py");
     }
     else {
-        strcpy(f_in, argv[0]);
+        strcpy(f_in, argv[1]);
     }
     if (argc <= 2) {
         printf("Output into default location: \'./tests/out/\'\n");
@@ -34,10 +34,10 @@ int main(int argc, char *argv[], char *envp[]) {
         strcpy(f_out[1], "./tests/out/lexically_analyzed.txt");
     }
     else {
-        strcpy(f_out[0], argv[1]);
-        strcpy(f_out[0] + strlen(argv[1]), "preprocessed.txt");
-        strcpy(f_out[1], argv[1]);
-        strcpy(f_out[1] + strlen(argv[1]), "lexically_analyzed.txt");
+        strcpy(f_out[0], argv[2]);
+        strcpy(f_out[0] + strlen(argv[2]), "preprocessed.txt");
+        strcpy(f_out[1], argv[2]);
+        strcpy(f_out[1] + strlen(argv[2]), "lexically_analyzed.txt");
     }
     FILE * InFile = fopen(f_in, "r"),
         * OutPreFile = fopen(f_out[0], "w+");
