@@ -51,5 +51,12 @@ python -m tokenize tests/test.py
 
 ### Windows
 
-`TODO: Build and Test in Windows`
+Using WSL in Windows is encouraged, but MSVC can also be used to build this project.
 
+
+
+
+
+### MacOS
+
+Building in MacOS is not yet tested, but using the `cmake` tool in MacOS is similar using in Linux.
