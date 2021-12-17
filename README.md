@@ -1,12 +1,6 @@
 # Helium-Lex
 
- Personal lexical analyzer by James Zhang, as an individule assignment of the course *COMP450305*: "形式语言与编译——赵银亮", XJTU.
-
-
-
-## Author Information
-
-计算机试验班 91 学生 张骏扬
+ Personal lexical analyzer by James Zhang, as an individule assignment of the course *COMP450305*: "形式语言与编译", XJTU.
 
 
 
